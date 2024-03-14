@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CardComponent from "./cart/CardComponent";
 import LoadingComponent from "./loader/LoadingComponent";
+//import CardTest from "./cart/CardTest";
 
 export type Products = {
   title: string,
@@ -30,6 +31,14 @@ export default function HomeComponent() {
     fetchData();
   }, [])
 
+    //return (
+
+    //   loading? 
+    //   (<LoadingComponent></LoadingComponent>) : 
+    //   (getProduct?.map((pro, index) =>{
+    //     <CardTest key={index} title={pro.title} image={pro.image} price={pro.price}></CardTest>
+    // })));
+    
 
   return (
 
