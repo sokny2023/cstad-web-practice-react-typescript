@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Button, Label, TextInput } from 'flowbite-react';
+import { Label, TextInput } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 
 
@@ -22,7 +22,7 @@ type createProductFromProps = {
     getDataForm: (product: addProduct) => void;
 }
 
-const FormCreateProduct: React.FC<createProductFromProps> = (getDataForm) => {
+const FormCreateProduct: React.FC<createProductFromProps> = ({getDataForm}) => {
     const [product, setProduct] = useState<addProduct>(
         {
             title : "",
@@ -33,14 +33,14 @@ const FormCreateProduct: React.FC<createProductFromProps> = (getDataForm) => {
         }
     );
 
-//    useEffect(() => {
-//     getDataForm(product);
-//    }, [product, getDataForm]);
+   useEffect(() => {
+    getDataForm(product);
+   }, [product, getDataForm]);
 
     const [error, setError] = useState<errorType>();
     useEffect(() => {
         const newError: errorType = {};
-        if(product.title.length < 3) {
+        if(product.title.length < 3 && product.title.length) {
             newError.title = "Title must be at least 3 characters";
         }
         if(product.price && Number(product.price < 0)){
@@ -74,7 +74,6 @@ const FormCreateProduct: React.FC<createProductFromProps> = (getDataForm) => {
         <TextInput id="price" type="text" placeholder="1999.99$" value={product.price} onChange={handleInputChange} required />
         {error?.price && <p className='text-red-500 text-xs'>{error.price}</p>}
       </div>    
-      <Button type="submit">Submit</Button>
     </form>
   );
 }

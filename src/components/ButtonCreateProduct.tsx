@@ -10,6 +10,25 @@ const ButtonCreateProduct = () => {
     console.log(product);
   }
 
+  async function createProudct(){
+    try{
+        const postProduct = await fetch('https://fakestoreapi.com/products', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(getDataForm), 
+        });
+
+        const res = await postProduct.json();
+        console.log(res);
+    }catch(error){
+        console.log(error);
+    }finally{
+        setOpenModal(false);
+    }
+  }
+
   return (
     <>
       <div className="flex justify-start">
@@ -23,7 +42,7 @@ const ButtonCreateProduct = () => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => setOpenModal(false)}>Create</Button>
+            <Button onClick={createProudct}>Create</Button>
             <Button color="gray" onClick={() => setOpenModal(false)}>
               Cancel
             </Button>

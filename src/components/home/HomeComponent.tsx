@@ -17,7 +17,7 @@ const HomeComponent = () => {
     try {
       const fetchProduct = await fetch("https://fakestoreapi.com/products");
       const res = await fetchProduct.json();
-      console.table(res);
+      console.log(res);
       setGetProduct(res);
     } catch (err) {
       console.log("Error, ", err);
