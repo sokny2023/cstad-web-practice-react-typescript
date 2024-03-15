@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CardComponent from "./cart/CardComponent";
 import LoadingComponent from "./loader/LoadingComponent";
+import ButtonCreateProduct from "../ButtonCreateProduct";
 
 export type Products = {
   title: string;
@@ -30,6 +31,10 @@ const HomeComponent = () => {
 
   return (
     <>
+      <section className="flex flex-col items-center">
+      <div className="mt-4">
+        <ButtonCreateProduct></ButtonCreateProduct>
+      </div>
       {loading ? (
         <LoadingComponent />) : (
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-6">
@@ -38,6 +43,7 @@ const HomeComponent = () => {
           ))}
         </div>
       )}
+      </section>
     </>
   );
   
